@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&display=swap');
+
+:root {
+  --pink: #ff6fb5;
+  --sky: #7fd3ff;
+  --yellow: #ffe45e;
+  --green: #8ff0a8;
+  --page: #d6f1ff;
+  --ink: #3b1f4d;
+  --bubble-font: 'Fredoka', 'Comic Sans MS', system-ui, sans-serif;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  margin: 0;
+  color: var(--ink);
+  background: var(--page);
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  background: var(--pink);
+}
+
+nav a {
+  color: var(--ink);
+  background: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 0.5rem 1.25rem;
+  border-radius: 999px;
+}
+
+nav a:hover {
+  background: var(--yellow);
+}
+
+header,
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+}
+
+#filter-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1rem;
+  align-items: end;
+  margin-bottom: 1.5rem;
+}
+
+#filter-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0.75rem 1rem;
+  border-radius: 22px;
+  font-family: var(--bubble-font);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+#filter-form label:nth-of-type(4n + 1) {
+  background: var(--pink);
+}
+
+#filter-form label:nth-of-type(4n + 2) {
+  background: var(--yellow);
+}
+
+#filter-form label:nth-of-type(4n + 3) {
+  background: var(--green);
+}
+
+#filter-form label:nth-of-type(4n) {
+  background: var(--sky);
+}
+
+input,
+select,
+button {
+  padding: 0.5rem 0.75rem;
+  font: inherit;
+  color: var(--ink);
+}
+
+input,
+select {
+  border: none;
+  border-radius: 999px;
+  background: #fff;
+}
+
+button {
+  cursor: pointer;
+  font-weight: 700;
+  border: 3px solid var(--ink);
+  border-radius: 999px;
+  background: var(--yellow);
+}
+
+button[type='submit'] {
+  background: var(--green);
+}
+
+button:hover {
+  background: var(--pink);
+}
+
+#results {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.book-card {
+  background: #fff;
+  border: 4px solid var(--pink);
+  border-radius: 22px;
+  padding: 1rem;
+}
+
+.book-card:nth-child(4n + 2) {
+  border-color: var(--yellow);
+}
+
+.book-card:nth-child(4n + 3) {
+  border-color: var(--green);
+}
+
+.book-card:nth-child(4n) {
+  border-color: var(--sky);
+}
+
+.book-card h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+.book-card a {
+  color: var(--ink);
+}
+
+.author {
+  margin: 0;
+  font-style: italic;
+}
+
+.meta {
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+}
+
+#pager {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem 0;
+}

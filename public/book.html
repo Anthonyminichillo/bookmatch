@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Details | BookMatch</title>
+    <link rel="stylesheet" href="css/book.css" />
+    <script type="module" src="js/book.js"></script>
+  </head>
+  <body>
+    <nav>
+      <a href="index.html">Books</a>
+      <a href="add.html">Add a Book</a>
+      <a href="lists.html">My Lists</a>
+    </nav>
+
+    <main>
+      <p id="status" aria-live="polite"></p>
+
+      <article id="details" hidden>
+        <h1 id="book-title"></h1>
+        <p id="book-author" class="author"></p>
+        <p id="book-description"></p>
+        <dl id="book-facts"></dl>
+        <div class="actions">
+          <button type="button" id="edit-button">Edit</button>
+          <button type="button" id="delete-button">Delete</button>
+        </div>
+      </article>
+
+      <form id="edit-form" hidden>
+        <h1>Edit book</h1>
+        <label>Title <input type="text" name="title" required /></label>
+        <label>Author <input type="text" name="author" required /></label>
+        <label>
+          Genre
+          <select name="genre">
+            <option>Fantasy</option>
+            <option>Science Fiction</option>
+            <option>Mystery</option>
+            <option>Romance</option>
+            <option>Historical Fiction</option>
+            <option>Horror</option>
+            <option>Thriller</option>
+            <option>Biography</option>
+            <option>Humor</option>
+            <option>Adventure</option>
+          </select>
+        </label>
+        <label>
+          Page count
+          <input type="number" name="pageCount" min="1" required />
+        </label>
+        <label>
+          Difficulty
+          <select name="difficulty">
+            <option>Easy</option>
+            <option>Medium</option>
+            <option>Hard</option>
+          </select>
+        </label>
+        <label>
+          Season
+          <select name="season">
+            <option>Spring</option>
+            <option>Summer</option>
+            <option>Fall</option>
+            <option>Winter</option>
+          </select>
+        </label>
+        <label>
+          Point of view
+          <select name="pov">
+            <option>First person</option>
+            <option>Third person</option>
+            <option>Multiple perspectives</option>
+          </select>
+        </label>
+        <label>Setting <input type="text" name="setting" /></label>
+        <label>
+          Themes (comma separated)
+          <input type="text" name="themes" />
+        </label>
+        <label>
+          Description
+          <textarea name="description" rows="4"></textarea>
+        </label>
+        <div class="actions">
+          <button type="submit">Save changes</button>
+          <button type="button" id="cancel-button">Cancel</button>
+        </div>
+      </form>
+    </main>
+  </body>
+</html>
