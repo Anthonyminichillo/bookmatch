@@ -3,9 +3,103 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BookMatch</title>
+    <title>BookMatch: Find Your Next Read</title>
+    <link rel="stylesheet" href="css/index.css" />
+    <script type="module" src="js/index.js"></script>
   </head>
   <body>
-    <h1>BookMatch</h1>
+    <nav>
+      <a href="index.html">Books</a>
+      <a href="add.html">Add a Book</a>
+      <a href="lists.html">My Lists</a>
+    </nav>
+
+    <header>
+      <h1>BookMatch</h1>
+      <p>
+        Pick any filters you like, leave the rest blank, and press Search. Click
+        a book to see its details.
+      </p>
+    </header>
+
+    <main>
+      <form id="filter-form">
+        <label>
+          Title or author
+          <input type="text" name="q" />
+        </label>
+        <label>
+          Genre
+          <select name="genre">
+            <option value="">Any</option>
+            <option>Fantasy</option>
+            <option>Science Fiction</option>
+            <option>Mystery</option>
+            <option>Romance</option>
+            <option>Historical Fiction</option>
+            <option>Horror</option>
+            <option>Thriller</option>
+            <option>Biography</option>
+            <option>Humor</option>
+            <option>Adventure</option>
+          </select>
+        </label>
+        <label>
+          Season
+          <select name="season">
+            <option value="">Any</option>
+            <option>Spring</option>
+            <option>Summer</option>
+            <option>Fall</option>
+            <option>Winter</option>
+          </select>
+        </label>
+        <label>
+          Difficulty
+          <select name="difficulty">
+            <option value="">Any</option>
+            <option>Easy</option>
+            <option>Medium</option>
+            <option>Hard</option>
+          </select>
+        </label>
+        <label>
+          Point of view
+          <select name="pov">
+            <option value="">Any</option>
+            <option>First person</option>
+            <option>Third person</option>
+            <option>Multiple perspectives</option>
+          </select>
+        </label>
+        <label>
+          Setting
+          <input type="text" name="setting" placeholder="e.g. Island" />
+        </label>
+        <label>
+          Themes
+          <input type="text" name="themes" placeholder="e.g. magic, fairies" />
+        </label>
+        <label>
+          Min pages
+          <input type="number" name="minPages" min="0" />
+        </label>
+        <label>
+          Max pages
+          <input type="number" name="maxPages" min="0" />
+        </label>
+        <button type="submit">Search</button>
+        <button type="reset" id="reset-button">Clear</button>
+      </form>
+
+      <p id="status" aria-live="polite"></p>
+      <section id="results"></section>
+
+      <div id="pager">
+        <button type="button" id="prev-button">Previous</button>
+        <span id="page-label"></span>
+        <button type="button" id="next-button">Next</button>
+      </div>
+    </main>
   </body>
 </html>
