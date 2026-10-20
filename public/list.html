@@ -4,50 +4,54 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Reading List | BookMatch</title>
+    <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/list.css" />
     <script type="module" src="js/list.js"></script>
   </head>
   <body>
-    <nav>
-      <a href="index.html">Books</a>
-      <a href="add.html">Add a Book</a>
-      <a href="lists.html">My Lists</a>
-    </nav>
-
-    <header>
-      <p><a href="lists.html">← Back to my lists</a></p>
-      <div id="list-details">
-        <h1 id="list-name">Reading list</h1>
-        <p id="list-description"></p>
-        <button type="button" id="edit-button">Edit list</button>
-      </div>
-
-      <form id="edit-form" novalidate hidden>
-        <label>
-          List name
-          <input type="text" name="name" maxlength="60" required />
-        </label>
-        <label>
-          Description
-          <input type="text" name="description" maxlength="200" required />
-        </label>
-        <button type="submit">Save changes</button>
-        <button type="button" id="cancel-button">Cancel</button>
-      </form>
+    <header class="site-header">
+      <a class="wordmark" href="index.html">BookMatch</a>
+      <nav>
+        <a href="index.html">Books</a>
+        <a href="add.html">Add a Book</a>
+        <a href="lists.html">My Lists</a>
+      </nav>
     </header>
 
     <main>
+      <a class="back-link" href="lists.html">← Back to my lists</a>
       <p id="status" aria-live="polite"></p>
+
+      <section id="list-details">
+        <h1 id="list-name">Reading list</h1>
+        <p id="list-description"></p>
+        <button type="button" id="edit-button">Edit list</button>
+      </section>
+
+      <form id="edit-form" hidden>
+        <h1>Edit list</h1>
+        <label>
+          List name
+          <input type="text" name="name" maxlength="60" />
+        </label>
+        <label>
+          Description
+          <input type="text" name="description" maxlength="200" />
+        </label>
+        <div class="actions">
+          <button type="submit">Save changes</button>
+          <button type="button" id="cancel-button">Cancel</button>
+        </div>
+      </form>
 
       <section id="add-books">
         <h2>Add a book</h2>
-        <p>
-          Type the title of the book you want to add here. It must match a book
-          in the catalog.
+        <p class="intro">
+          Type the full title of a book from the catalog and press Add.
         </p>
         <form id="add-form">
           <label>
-            Title
+            Book title
             <input type="text" name="title" placeholder="e.g. 2001" />
           </label>
           <button type="submit">Add</button>
@@ -55,17 +59,22 @@
       </section>
 
       <section id="list-books">
-        <h2>Books in this list</h2>
-        <label>
-          Show
-          <select id="status-filter">
-            <option value="">All</option>
-            <option>Want to read</option>
-            <option>Reading</option>
-            <option>Did not finish</option>
-            <option>Finished</option>
-          </select>
-        </label>
+        <div class="section-head">
+          <h2>Books in this list</h2>
+          <label>
+            Show
+            <select id="status-filter">
+              <option value="">All</option>
+              <option>Want to read</option>
+              <option>Reading</option>
+              <option>Did not finish</option>
+              <option>Finished</option>
+            </select>
+          </label>
+        </div>
+        <p class="intro">
+          Change a book's status as you read, or remove it from the list.
+        </p>
         <p id="books-status" aria-live="polite"></p>
         <div id="book-list"></div>
       </section>

@@ -52,16 +52,16 @@ function makeCard(list) {
   let progress = '';
   let dnfMeta = '';
   if (progressTotal !== 0) {
-    progress = ` | ${Math.round((finished / progressTotal) * 100)}% of list read`;
+    progress = ` · ${Math.round((finished / progressTotal) * 100)}% of list read`;
   }
   if (dnf !== 0) {
-    dnfMeta = ` | ${dnf} DNF`;
+    dnfMeta = ` · ${dnf} DNF`;
   }
 
   const meta = document.createElement('p');
   meta.className = 'meta';
   meta.textContent =
-    `${total} Total Books | ${progressTotal - finished} Reading | ${finished} Finished` +
+    `${total} Total Books · ${progressTotal - finished} Reading · ${finished} Finished` +
     dnfMeta +
     progress;
 

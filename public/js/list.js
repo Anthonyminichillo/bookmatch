@@ -39,8 +39,7 @@ async function loadList() {
     status.textContent = '';
     showDetails();
     await loadBooks();
-  } 
-  catch {
+  } catch {
     status.textContent = 'List not found.';
   }
 }
@@ -63,8 +62,7 @@ function makeBookCard({ entry, book }) {
     link.textContent = book.title;
     title.append(link);
     author.textContent = `by ${book.author}`;
-  } 
-  else {
+  } else {
     title.textContent = 'Book no longer available';
     author.textContent = 'This book was removed from the catalog.';
   }
@@ -98,11 +96,9 @@ function makeBooks() {
   bookListEl.replaceChildren(...shown.map(makeBookCard));
   if (books.length === 0) {
     booksStatus.textContent = 'No books yet. Add one above';
-  } 
-  else if (shown.length === 0) {
+  } else if (shown.length === 0) {
     booksStatus.textContent = `No books marked "${filter}".`;
-  } 
-  else {
+  } else {
     booksStatus.textContent = '';
   }
 }
@@ -131,13 +127,12 @@ async function updateStatus(entry, newStatus) {
     entry.status = newStatus;
     makeBooks();
     booksStatus.textContent = 'Reading status updated.';
-  } 
-  catch {
+  } catch {
     makeBooks();
-    booksStatus.textContent = 'Could not update the reading status. Please try again.';
+    booksStatus.textContent =
+      'Could not update the reading status. Please try again.';
   }
 }
-
 
 async function removeBook(entry, book) {
   const name = book ? `"${book.title}"` : 'this book';
@@ -193,8 +188,7 @@ addForm.addEventListener('submit', async (event) => {
     addForm.reset();
     await loadList();
     booksStatus.textContent = `Added "${book.title}".`;
-  } 
-  catch {
+  } catch {
     booksStatus.textContent = 'Could not add the book. Please try again.';
   }
 });
@@ -215,9 +209,9 @@ editForm.addEventListener('submit', async (event) => {
     if (!res.ok) throw new Error('Update failed');
     await loadList();
     status.textContent = 'List updated.';
-  } 
-  catch {
-    status.textContent = 'Could not update the name and description. Please try again.';
+  } catch {
+    status.textContent =
+      'Could not update the name and description. Please try again.';
   }
 });
 

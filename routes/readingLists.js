@@ -181,18 +181,21 @@ router.put('/:id/books/:bookId', async (req, res) => {
     }
 
     const db = await getDb();
-    const result = await db.collection('readingLists').updateOne(
-      { _id: new ObjectId(id), 'books.bookId': new ObjectId(bookId) },
-      { $set: { 'books.$.status': req.body.status, lastModified: new Date() } },
-    );
+    const result = await db
+      .collection('readingLists')
+      .updateOne(
+        { _id: new ObjectId(id), 'books.bookId': new ObjectId(bookId) },
+        {
+          $set: { 'books.$.status': req.body.status, lastModified: new Date() },
+        },
+      );
 
     if (result.matchedCount === 0) {
       return res.status(404).json({ error: 'List or book not found' });
     }
 
     res.json({ updated: true });
-  } 
-  catch (err) {
+  } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
@@ -220,8 +223,7 @@ router.delete('/:id/books/:bookId', async (req, res) => {
     }
 
     res.json({ deleted: true });
-  } 
-  catch (err) {
+  } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
