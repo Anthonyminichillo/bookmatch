@@ -7,7 +7,7 @@ const router = Router();
 const STATUSES = [
   'Want to read', 
   'Reading', 
-  "Did not Finish", 
+  "Did not finish", 
   'Finished', ];
 
 const FIELDS = [
@@ -23,15 +23,16 @@ function pickFields(body) {
   return list;
 }
 
-// CrEATE (list)
+// CREATE (list)
 router.post('/', async (req, res) => {
   try {
-
+    const list = pickFields(req.body);
+    if (!list.name || !list.description) {
+      return res.status(400).json({ error: 'Name and description are required' });
+    }
   }
   catch(err) {
-
   }
-
 });
 
 // READ (lists)
