@@ -25,37 +25,84 @@ function pickFields(body) {
 
 // CrEATE (list)
 router.post('/', async (req, res) => {
+  try {
+
+  }
+  catch(err) {
+
+  }
 
 });
 
 // READ (lists)
 router.get('/', async (req, res) => {
+  try {
+
+  }
+  catch(err) {
+    
+  }
 });
 
 // READ (one list)
 router.get('/:id', async (req, res) => {
+  try {
+
+  }
+  catch(err) {
+    
+  }
 });
 
 
 // UPDATE (list)
 router.put('/:id', async (req, res) => {
+  try {
 
+  }
+  catch(err) {
+    
+  }
 });
 
 // DELETE (list)
 router.delete('/:id', async (req, res) => {
+  try {
+
+  }
+  catch(err) {
+    
+  }
 });
 
 // CREATE (add book to list)
 router.post('/:id/books', async (req, res) => {
+  try {
+
+  }
+  catch(err) {
+    
+  }
 });
 
 // UPDATE (book status)
 router.put('/:id/books/:bookId', async (req, res) => {
+  try {
+
+  }
+  catch(err) {
+    
+  }
 });
 
 // DELETE (remove book from list)
 router.delete('/:id/books/:bookId', async (req, res) => {
+  try {
+
+  }
+  catch(err) {
+    
+  }
 });
 
 export default router;
