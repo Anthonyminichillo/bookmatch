@@ -62,7 +62,7 @@ function makeCard(list) {
 
     const meta = document.createElement('p');
     meta.className = 'meta'
-    meta.textContent = `${total} Total Books | ${progressTotal - finished - dnf} Reading | ${finished} Finished` + dnfMeta + progress;
+    meta.textContent = `${total} Total Books | ${progressTotal - finished} Reading | ${finished} Finished` + dnfMeta + progress;
 
     const deleteButton = document.createElement('button')
     deleteButton.type = 'button';
@@ -73,6 +73,7 @@ function makeCard(list) {
     card.append(title, description, meta, deleteButton);
     return card;
 }
+
 async function loadLists() {
     statusListEl.textContent = 'Loading lists...';
     try {
@@ -93,9 +94,19 @@ async function loadLists() {
     }
 }
 
-function deleteList(list) {
-    
-
+async function deleteList(list) {
+    if (!window.confirm(`Do you want to delete ${list.name}? This action cannot be undone.`)) {
+        return;
+    }
+    try {
+        const res = await fetch(`/api/lists/${list._id}`, { method : 'DELETE'});
+        if (!res.ok) throw new Error('Delete failed');
+        await loadLists();
+        statusListEl.textContent = 'List deleted';
+    }
+    catch {
+        statusListEl.textContent = 'Could not delete list. Please try again.'
+    }
 }
 
 loadLists()

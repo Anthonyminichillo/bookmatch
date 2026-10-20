@@ -1,0 +1,38 @@
+:root {
+  --pink: #ff6fb5;
+  --sky: #7fd3ff;
+  --yellow: #ffe45e;
+  --green: #8ff0a8;
+  --page: #d6f1ff;
+  --ink: #3b1f4d;
+  --bubble-font: 'Fredoka', 'Comic Sans MS', system-ui, sans-serif;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  margin: 0;
+  color: var(--ink);
+  background: var(--page);
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  background: var(--pink);
+}
+
+nav a {
+  color: var(--ink);
+  background: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 0.5rem 1.25rem;
+  border-radius: 999px;
+}
+
+nav a:hover {
+  background: var(--yellow);
+}

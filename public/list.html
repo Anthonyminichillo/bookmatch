@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reading List | BookMatch</title>
+    <link rel="stylesheet" href="css/list.css" />
+    <script type="module" src="js/list.js"></script>
+  </head>
+  <body>
+    <nav>
+      <a href="index.html">Books</a>
+      <a href="add.html">Add a Book</a>
+      <a href="lists.html">My Lists</a>
+    </nav>
+
+    <header>
+      <p><a href="lists.html">← Back to my lists</a></p>
+      <div id="list-details">
+        <h1 id="list-name">Reading list</h1>
+        <p id="list-description"></p>
+        <button type="button" id="edit-button">Edit list</button>
+      </div>
+
+      <form id="edit-form" novalidate hidden>
+        <label>
+          List name
+          <input type="text" name="name" maxlength="60" required />
+        </label>
+        <label>
+          Description
+          <input type="text" name="description" maxlength="200" required />
+        </label>
+        <button type="submit">Save changes</button>
+        <button type="button" id="cancel-button">Cancel</button>
+      </form>
+    </header>
+
+    <main>
+      <p id="status" aria-live="polite"></p>
+
+      <section id="add-books">
+        <h2>Add books</h2>
+        <p>Type the title of the book you want to add here</p>
+        <form id="search-form">
+          <label>
+            Title
+            <input type="text" name="q" placeholder="e.g. 2001" />
+          </label>
+          <button type="submit">Add</button>
+        </form>
+      </section>
+
+      <section id="list-books">
+        <h2>Books in this list</h2>
+        <label>
+          Show
+          <select id="status-filter">
+            <option value="">All</option>
+            <option>Want to read</option>
+            <option>Reading</option>
+            <option>Did not finish</option>
+            <option>Finished</option>
+          </select>
+        </label>
+        <p id="books-status" aria-live="polite"></p>
+        <div id="book-list"></div>
+      </section>
+    </main>
+  </body>
+</html>

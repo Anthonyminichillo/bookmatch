@@ -59,6 +59,26 @@ router.get('/', async (req, res) => {
   }
 });
 
+// DELETE (list)
+router.delete('/:id', async (req, res) => {
+  try {
+    if (!ObjectId.isValid(req.params.id)) {
+      return res.status(400).json({error: "Invalid list id"})
+    }
+    const db = await getDb();
+    const deletionResult = await db
+      .collection('readingLists')
+      .deleteOne({_id: new ObjectId(req.params.id)});
+    if (deletionResult.deletedCount == 0) {
+      return res.status(404).json({error: "List not found"})
+    }
+    res.json({deleted: true})
+  }
+  catch(err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // READ (one list)
 router.get('/:id', async (req, res) => {
   try {
@@ -80,24 +100,37 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-
 // UPDATE (list)
 router.put('/:id', async (req, res) => {
   try {
+    if (!ObjectId.isValid(req.params.id)) {
+      return res.status(400).json({error: 'Invalid list id'});
+    }
 
-  }
-  catch(err) {
-    res.status(500).json({ error: err.message });
-  }
-});
+    const updates = pickFields(req.body);
+    if (Object.keys(updates).length === 0) {
+      return res.status(400).json({error: 'No valid fields to update'});
+    }
+    if (('name' in updates && !updates.name) || ('description' in updates && !updates.description)) {
+      return res
+        .status(400)
+        .json({error: 'Name and description cannot be empty'});
+    }
 
-// DELETE (list)
-router.delete('/:id', async (req, res) => {
-  try {
+    const db = await getDb();
+    const result = await db
+      .collection('readingLists')
+      .updateOne(
+        {_id: new ObjectId(req.params.id)},
+        {$set: {...updates, lastModified: new Date()}},);
 
-  }
-  catch(err) {
-    res.status(500).json({ error: err.message });
+    if (result.matchedCount === 0) {
+      return res.status(404).json({error: 'List not found'});
+    }
+
+    res.json({updated: true});
+  } catch (err) {
+    res.status(500).json({error: err.message});
   }
 });
 
@@ -114,7 +147,9 @@ router.post('/:id/books', async (req, res) => {
 // UPDATE (book status)
 router.put('/:id/books/:bookId', async (req, res) => {
   try {
-
+    if (!ObjectId.isValid(req.params.id)) {
+      return res.status(400).json({error: 'Invalid list id'})
+    }
   }
   catch(err) {
     res.status(500).json({ error: err.message });
