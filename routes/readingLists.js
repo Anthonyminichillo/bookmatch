@@ -46,7 +46,13 @@ router.post('/', async (req, res) => {
 // READ (lists)
 router.get('/', async (req, res) => {
   try {
-
+    const db = await getDb();
+    const lists = await db
+      .collection('readingLists')
+      .find()
+      .sort({lastModified: -1})
+      .toArray();
+    res.json(lists);
   }
   catch(err) {
     res.status(500).json({ error: err.message });
@@ -56,7 +62,18 @@ router.get('/', async (req, res) => {
 // READ (one list)
 router.get('/:id', async (req, res) => {
   try {
+    if (!ObjectId.isValid(req.params.id)) {
+      return res.status(400).json({ error: 'Invalid list id' });
+    }
 
+    const db = await getDb();
+    const list = await db
+      .collection('readingLists')
+      .findOne({_id: new ObjectId(req.params.id)});
+    if(!list) {
+      return res.status(404).json({error: "List not found"});
+    }
+    res.json(list)
   }
   catch(err) {
     res.status(500).json({ error: err.message });

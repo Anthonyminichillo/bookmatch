@@ -1,15 +1,14 @@
-createList = document.querySelector("#create-form")
-statusEl = document.querySelector("#status")
-listEl = document.querySelector("#lists")
+const createList = document.querySelector("#create-form")
+const statusEl = document.querySelector("#status")
+const listEl = document.querySelector("#lists")
 
 createList.addEventListener("submit", async (event) => {
     event.preventDefault()
+    const list = Object.fromEntries(new FormData(createList));
     if (!list.name.trim() || !list.description.trim()) {
         statusEl.textContent = 'Please enter a name and a description.';
         return;
     }
-    const list = Object.fromEntries(new FormData(createList));
-    
     try {
         const res = await fetch('/api/lists', {
             method: 'POST',
