@@ -30,8 +30,16 @@ router.post('/', async (req, res) => {
     if (!list.name || !list.description) {
       return res.status(400).json({ error: 'Name and description are required' });
     }
+    list.books = [];
+    list.createdAt = new Date();
+    list.lastModified = new Date();
+
+    const db = await getDb();
+    const result = await db.collection('readingLists').insertOne(list);
+    res.status(201).json({ _id: result.insertedId, ...list });
   }
   catch(err) {
+    res.status(500).json({ error: err.message });
   }
 });
 
@@ -41,7 +49,7 @@ router.get('/', async (req, res) => {
 
   }
   catch(err) {
-    
+    res.status(500).json({ error: err.message });
   }
 });
 
@@ -51,7 +59,7 @@ router.get('/:id', async (req, res) => {
 
   }
   catch(err) {
-    
+    res.status(500).json({ error: err.message });
   }
 });
 
@@ -62,7 +70,7 @@ router.put('/:id', async (req, res) => {
 
   }
   catch(err) {
-    
+    res.status(500).json({ error: err.message });
   }
 });
 
@@ -72,7 +80,7 @@ router.delete('/:id', async (req, res) => {
 
   }
   catch(err) {
-    
+    res.status(500).json({ error: err.message });
   }
 });
 
@@ -82,7 +90,7 @@ router.post('/:id/books', async (req, res) => {
 
   }
   catch(err) {
-    
+    res.status(500).json({ error: err.message });
   }
 });
 
@@ -92,7 +100,7 @@ router.put('/:id/books/:bookId', async (req, res) => {
 
   }
   catch(err) {
-    
+    res.status(500).json({ error: err.message });
   }
 });
 
@@ -102,7 +110,7 @@ router.delete('/:id/books/:bookId', async (req, res) => {
 
   }
   catch(err) {
-    
+    res.status(500).json({ error: err.message });
   }
 });
 
