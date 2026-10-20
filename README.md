@@ -2,8 +2,8 @@
 
 **Authors:** Anthony Minichillo and Alex Dat Huynh
 **Class:** (https://johnguerra.co/classes/webDevelopment_online_fall_2026/)
-**Live site:** [PASTE RENDER LINK HERE]
-**Demo video:** [PASTE VIDEO LINK HERE]
+**Live site:**
+**Demo video:**
 **Design document:** (https://docs.google.com/document/d/1ZpYkkq1hIhD9Z7agO7sLHxjBgsseo7N8Hi_Clo_r4_k/edit?usp=sharing)
 
 > The live site is hosted on Render's free tier. The first load after a period
