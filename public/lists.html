@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Reading Lists | BookMatch</title>
+    <link rel="stylesheet" href="css/lists.css" />
+    <script type="module" src="js/lists.js"></script>
+  </head>
+  <body>
+    <nav>
+      <a href="index.html">Books</a>
+      <a href="add.html">Add a Book</a>
+      <a href="lists.html">My Lists</a>
+    </nav>
+
+    <header>
+      <h1>My Reading Lists</h1>
+      <p>
+        Type a name and press Create list to start a new list. Click a list to
+        add books and track your reading progress.
+      </p>
+    </header>
+
+    <main>
+      <form id="create-form">
+        <label>
+          List name
+          <input
+            type="text"
+            name="name"
+            placeholder="e.g. Fall cozy reads"
+            maxlength="60"
+            required
+          />
+        </label>
+        <button type="submit">Create list</button>
+      </form>
+
+      <p id="status" aria-live="polite"></p>
+      <section id="lists"></section>
+
+      <div id="pager">
+        <button type="button" id="prev-button">Previous</button>
+        <span id="page-label"></span>
+        <button type="button" id="next-button">Next</button>
+      </div>
+    </main>
+  </body>
+</html>
