@@ -40,12 +40,15 @@
       <p id="status" aria-live="polite"></p>
 
       <section id="add-books">
-        <h2>Add books</h2>
-        <p>Type the title of the book you want to add here</p>
-        <form id="search-form">
+        <h2>Add a book</h2>
+        <p>
+          Type the title of the book you want to add here. It must match a book
+          in the catalog.
+        </p>
+        <form id="add-form">
           <label>
             Title
-            <input type="text" name="q" placeholder="e.g. 2001" />
+            <input type="text" name="title" placeholder="e.g. 2001" />
           </label>
           <button type="submit">Add</button>
         </form>
