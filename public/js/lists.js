@@ -41,11 +41,14 @@ function makeCard(list) {
   const total = list.books.length;
   let finished = 0;
   let dnf = 0;
+  let reading = 0;
   for (const entry of list.books) {
     if (entry.status == 'Finished') {
       finished += 1;
     } else if (entry.status == 'Did not finish') {
       dnf += 1;
+    } else if (entry.status == 'Reading') {
+      reading += 1;
     }
   }
   const progressTotal = total - dnf;
@@ -61,7 +64,7 @@ function makeCard(list) {
   const meta = document.createElement('p');
   meta.className = 'meta';
   meta.textContent =
-    `${total} Total Books · ${progressTotal - finished} Reading · ${finished} Finished` +
+    `${total} Total Books · ${reading} Reading · ${finished} Finished` +
     dnfMeta +
     progress;
 
